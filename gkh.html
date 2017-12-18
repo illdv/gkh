@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ЖКХ</title>
+  <link rel="stylesheet" type="text/css" href="slyle.css">
+</head>
+
+<body onload="storage();">
+  <table>
+    <tr>
+      <td></td>
+      <td>Прошлый месяц</td>
+      <td>Текущий месяц</td>
+      <td>Разница</td>
+      <td>В сток</td>
+      <td>Всего по тарифу</td>
+    </tr>
+
+    <tr class="wrap">
+      <th>Горячаяя вода:</th>
+      <td>
+        <textarea type="text" id="preHot"></textarea>
+      </td>
+      <td>
+        <input type="text" class="dateIn">
+      </td>
+      <td class="value" id="diffHot">
+        _
+      </td>
+      <td class="value" id="sinkHot">
+        _
+      </td>
+      <td class="value" id="allHot">
+        _
+      </td>
+    </tr>
+
+    <tr class="wrap">
+      <th>Холодная вода:</th>
+      <td>
+        <textarea type="text" id="preCold"></textarea>
+      </td>
+      <td>
+        <input type="text" class="dateIn">
+      </td>
+      <td class="value" id="diffCold">
+        _
+      </td>
+      <td></td>
+      <td class="value" id="allCold">
+        _
+      </td>
+    </tr>
+
+    <tr class="wrap">
+      <th>Газ:</th>
+      <td>
+        <textarea type="text" id="preGas"></textarea>
+      </td>1
+      <td>
+        <input type="text" class="dateIn">
+      </td>
+      <td class="value" id="diffGas">
+        _
+      </td>
+      <td></td>
+      <td class="value" id="allGas">
+        _
+      </td>
+    </tr>
+
+    <tr class="wrap">
+      <th>Электричество:</th>
+      <td>
+        <textarea type="text" id="preEl"></textarea>
+      </td>
+      <td>
+        <input type="text" class="dateIn">
+      </td>
+      <td class="value" id="diffEl">
+        _
+      </td>
+      <td></td>
+      <td class="value" id="allEl">
+        _
+      </td>
+    </tr>
+
+  </table>
+  <table class="total">
+    <tr>
+      <td>Начисленно по плану</td>
+      <td>По приборам:</td>
+      <td>Итого:</td>
+    </tr>
+    <td>
+      <input type="text" class="dateIn">
+    </td>
+    <input id="total" class="value"> _
+    </td>
+
+    <td id="result" class="value">
+      _
+    </td>
+    <td>
+
+    </td>
+    </tr>
+  </table>
+  <button onclick="doyear ()">Посчитать</button>
+</body>
+<script src="scripts.js"></script>
+
+</html>
