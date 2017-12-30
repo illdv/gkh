@@ -7,39 +7,38 @@ const storage = () => {
 const doyear = () => {
   const res = [];
   const dateIn = document.getElementsByClassName('dateIn');
-
-  const fn = (resNum) => {
+  const diffRes = document.getElementsByClassName('diffRes');
+  const allRes = document.getElementsByClassName('allRes');
+  const diff = (resNum) => {
     const { value } = dateIn[resNum];
     res.push(value);
-    const diff = value - +(localStorage.res.split(',')[resNum]);
-    return diff;
+    const d = value - +(localStorage.res.split(',')[resNum]);
+    return d;
   };
-  const hot = fn(0);
-  document.getElementById('diffHot').innerHTML = hot;
-  const sinkHot = hot * 17.00;
-  document.getElementById('sinkHot').innerHTML = sinkHot;
-  const allHot = hot * 105.76;
-  document.getElementById('allHot').innerHTML = allHot;
-
-  const cold = fn(1);
-  document.getElementById('diffCold').innerHTML = cold;
-  const allCold = cold * 33.50;
-  document.getElementById('allCold').innerHTML = allCold;
-
-  const gas = fn(2);
-  document.getElementById('diffGas').innerHTML = gas;
-  const allGas = gas * 5.85;
-  document.getElementById('allGas').innerHTML = allGas;
-
-  const el = fn(3);
-  document.getElementById('diffEl').innerHTML = el;
-  const allEl = el * 3.74;
-  document.getElementById('allEl').innerHTML = allEl;
-
+  const price = (element) => {
+    if (element === 0) {
+      return diff(0) * 105.76;
+    } else if (element === 1) {
+      return diff(1) * 33.50;
+    } else if (element === 2) {
+      return diff(2) * 5.85;
+    } else if (element === 3) {
+      return diff(3) * 3.74;
+    }
+  };
+  let total = 0;
+  for (let i = 0; i < dateIn.length; i += 1) {
+    const el = diff(i);
+    if (i === 0) {
+      document.getElementById('sinkHot').innerHTML = el * 17.00;
+    }
+    diffRes[i].innerHTML = el;
+    allRes[i].innerHTML = price(i);
+    total += price(i);
+  }
+  document.getElementById('total').innerHTML = total.toFixed(2);
   localStorage.res = res;
   const plan = document.getElementById('plan').value;
-  const total = (allCold + allHot + sinkHot + allEl + allGas).toFixed(2);
-  document.getElementById('total').innerHTML = total;
   const result = plan + Number(total);
   document.getElementById('result').innerHTML = result;
 };

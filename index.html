@@ -26,13 +26,13 @@
       <td>
         <input type="text" class="dateIn">
       </td>
-      <td class="value" id="diffHot">
+      <td class="diffRes">
         _
       </td>
       <td class="value" id="sinkHot">
         _
       </td>
-      <td class="value" id="allHot">
+      <td class="allRes">
         _
       </td>
     </tr>
@@ -45,11 +45,11 @@
       <td>
         <input type="text" class="dateIn">
       </td>
-      <td class="value" id="diffCold">
+      <td class="diffRes">
         _
       </td>
       <td></td>
-      <td class="value" id="allCold">
+      <td class="allRes">
         _
       </td>
     </tr>
@@ -62,11 +62,11 @@
       <td>
         <input type="text" class="dateIn">
       </td>
-      <td class="value" id="diffGas">
+      <td class="diffRes">
         _
       </td>
       <td></td>
-      <td class="value" id="allGas">
+      <td class="allRes">
         _
       </td>
     </tr>
@@ -79,36 +79,35 @@
       <td>
         <input type="text" class="dateIn">
       </td>
-      <td class="value" id="diffEl">
+      <td class="diffRes">
         _
       </td>
       <td></td>
-      <td class="value" id="allEl">
+      <td class="allRes">
         _
       </td>
     </tr>
-
   </table>
-  <table class="total">
+
+  <table>
     <tr>
       <td>Начисленно по плану</td>
       <td>По приборам:</td>
       <td>Итого:</td>
     </tr>
-    <td>
-      <input type="text" id="plan">
-    </td>
-    <input id="total" class="value"> _
-    </td>
-
-    <td id="result" class="value">
-      _
-    </td>
-    <td>
-
-    </td>
+    <tr>
+      <td>
+        <input id="plan">
+      </td>
+      <td id="total">
+        _
+      </td>
+      <td id="result">
+        _
+      </td>
     </tr>
   </table>
+
   <button onclick="doyear ()">Посчитать</button>
 </body>
 <script src="scripts.js"></script>
