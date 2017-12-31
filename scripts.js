@@ -4,34 +4,41 @@ const storage = () => {
     preDate[i].innerHTML = localStorage.res.split(',')[i];
   }
 };
-const doyear = () => {
+const fn = (x) => {
+  return x * x;
+}
+fn(2);
+const engine = () => {
   const res = [];
   const dateIn = document.getElementsByClassName('dateIn');
   const diffRes = document.getElementsByClassName('diffRes');
   const allRes = document.getElementsByClassName('allRes');
+
   const diff = (resNum) => {
     const { value } = dateIn[resNum];
     res.push(value);
     const d = value - +(localStorage.res.split(',')[resNum]);
     return d;
   };
-  const price = (element) => {
-    if (element === 0) {
-      return diff(0) * 105.76;
-    } else if (element === 1) {
-      return diff(1) * 33.50;
-    } else if (element === 2) {
-      return diff(2) * 5.85;
-    } else if (element === 3) {
-      return diff(3) * 3.74;
-    }
-  };
+
   let total = 0;
   for (let i = 0; i < dateIn.length; i += 1) {
     const el = diff(i);
-    if (i === 0) {
-      document.getElementById('sinkHot').innerHTML = el * 17.00;
-    }
+    const price = (element) => {
+      switch (element) {
+        case 0:
+          document.getElementById('sinkHot').innerHTML = el * 17.00;
+          return el * 105.76;
+        case 1:
+          return el * 33.50;
+        case 2:
+          return element * 5.85;
+        case 3:
+          return el * 3.74;
+        default:
+          return alert('incorrect value');
+      }
+    };
     diffRes[i].innerHTML = el;
     allRes[i].innerHTML = price(i);
     total += price(i);
