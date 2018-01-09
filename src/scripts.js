@@ -4,10 +4,8 @@ const storage = () => {
     preDate[i].innerHTML = localStorage.res.split(',')[i];
   }
 };
-const fn = (x) => {
-  return x * x;
-}
-fn(2);
+export const fn = num => num * 3;
+export const fn2 = num => num * 2;
 const engine = () => {
   const res = [];
   const dateIn = document.getElementsByClassName('dateIn');
