@@ -1,8 +1,5 @@
-import { fn, fn2 } from '../src/scripts';
+import engine from '../src/scripts';
 
-test('fn', () => {
-  expect(fn(6)).toBe(12);
-});
-test('fn', () => {
-  expect(fn2(6)).toBe(12);
+test('engine', () => {
+  expect(engine(1,2,3,4,5)).toBe(511.7);
 });
