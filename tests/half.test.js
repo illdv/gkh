@@ -1,5 +1,5 @@
-import engine from '../src/scripts';
+import engine from '../dist/example';
 
 test('engine', () => {
-  expect(engine(1,2,3,4,5)).toBe(511.7);
+  expect(engine([7, 2, 3, 4])).toBe({});
 });

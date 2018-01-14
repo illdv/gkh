@@ -108,8 +108,16 @@
     </tr>
   </table>
 
-  <button onclick="engine()">Посчитать</button>
+  <button onclick="output()">Посчитать</button>
 </body>
+<script>
+  const storage = () => {
+    const preDate = document.getElementsByClassName('preDate');
+    for (let i = 0; i < preDate.length; i += 1) {
+      preDate[i].innerHTML = localStorage.res.split(',')[i];
+    }
+  };
+</script>
 <script>
   var exports = {};
 </script>
