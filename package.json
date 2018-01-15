@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/scripts.js",
   "scripts": {
+    "webpack": "webpack -w -p --devtool source-map", 
     "test": "jest",
     "babel": "babel",
     "gulp": "gulp",
@@ -20,13 +21,16 @@
   "bugs": {
     "url": "https://github.com/illdv/gkh/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "webpack": "^3.10.0"
+  },
   "homepage": "https://github.com/illdv/gkh#readme",
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
     "babel-eslint": "*",
     "babel-jest": "*",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "*",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
