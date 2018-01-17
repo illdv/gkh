@@ -1,19 +1,15 @@
 import getCalc from './getCalc';
 
 
-const d = [];
-const dateIn = document.getElementsByClassName('dateIn');
-
-
 const out = {};
+export default out;
 
 const output = () => {
-  getCalc(dateIn);
-
+  getCalc();
   const diffRes = document.getElementsByClassName('diffRes');
   const allRes = document.getElementsByClassName('allRes');
 
-  for (let i = 0; i < dateIn.length; i += 1) {
+  for (let i = 0; i < diffRes.length; i += 1) {
     diffRes[i].innerHTML = out.diff[i];
     allRes[i].innerHTML = out.all[i];
   }
@@ -22,5 +18,3 @@ const output = () => {
   document.getElementById('result').innerHTML = out.result;
 };
 document.getElementById('calc').addEventListener('click', output, true);
-
-export { dateIn, d, out };

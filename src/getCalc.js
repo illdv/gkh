@@ -1,18 +1,19 @@
-import { out } from './output';
+import out from './output';
 import getDiff from './getDiff';
 import getPrice from './getPrice';
+import input from './input';
 
-export default (data) => {
+export default () => {
   const res = [];
   const plan = document.getElementById('plan').value;
   const diff = [];
   const all = [];
   let total = 0;
-  for (let i = 0; i < data.length; i += 1) {
-    total += Number(data[i].value);
-    diff.push(getDiff(i));
+  for (let i = 0; i < input.length; i += 1) {
+    total += Number(input[i].value);
+    diff.push(getDiff(i, input[i].value));
     all.push(Number(getPrice(i).toFixed(2)));
-    res.push(data[i].value);
+    res.push(input[i].value);
   }
   out.diff = diff;
   out.all = all;
