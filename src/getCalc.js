@@ -1,24 +1,30 @@
-import out from './output';
 import getDiff from './getDiff';
 import getPrice from './getPrice';
 import input from './input';
 
+const out = {};
+
 export default () => {
-  const res = [];
-  const plan = document.getElementById('plan').value;
+  const r = [];
+  const plan = Number(input.plan.value);
   const diff = [];
   const all = [];
   let total = 0;
-  for (let i = 0; i < input.length; i += 1) {
-    total += Number(input[i].value);
-    diff.push(getDiff(i, input[i].value));
-    all.push(Number(getPrice(i).toFixed(2)));
-    res.push(input[i].value);
+  for (let i = 0; i < input.res.length; i += 1) {
+    const { value } = input.res[i];
+    total += Number(value);
+    diff.push(getDiff(i, value));
+    if (getPrice(i).length > 1) {
+      const sink = getPrice(i)[1];
+      out.sink = sink;
+    }
+    all.push(Number(getPrice(i)[0]));
+    r.push(value);
   }
   out.diff = diff;
   out.all = all;
-  out.total = Number(total.toFixed(2));
+  out.total = total;
   out.result = plan + total;
-  localStorage.res = res;
+  localStorage.res = r;
   return out;
 };

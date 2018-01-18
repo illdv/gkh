@@ -1,11 +1,8 @@
 import getCalc from './getCalc';
 
 
-const out = {};
-export default out;
-
 const output = () => {
-  getCalc();
+  const out = getCalc();
   const diffRes = document.getElementsByClassName('diffRes');
   const allRes = document.getElementsByClassName('allRes');
 
