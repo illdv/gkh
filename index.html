@@ -11,6 +11,7 @@
   <table>
     <tr>
       <td></td>
+      <td>Цена</td>
       <td>Прошлый месяц</td>
       <td>Текущий месяц</td>
       <td>Разница</td>
@@ -20,6 +21,10 @@
 
     <tr class="wrap">
       <th>Горячаяя вода:</th>
+      <td>
+        <textarea type="text" id="costSink"></textarea>
+        <textarea type="text" class="costRes"></textarea>
+      </td>
       <td>
         <textarea type="text" class="preDate"></textarea>
       </td>
@@ -40,6 +45,9 @@
     <tr class="wrap">
       <th>Холодная вода:</th>
       <td>
+        <textarea type="text" class="costRes"></textarea>
+      </td>
+      <td>
         <textarea type="text" class="preDate"></textarea>
       </td>
       <td>
@@ -57,6 +65,9 @@
     <tr class="wrap">
       <th>Газ:</th>
       <td>
+        <textarea type="text" class="costRes"></textarea>
+      </td>
+      <td>
         <textarea type="text" class="preDate"></textarea>
       </td>1
       <td>
@@ -73,6 +84,9 @@
 
     <tr class="wrap">
       <th>Электричество:</th>
+      <td>
+        <textarea type="text" class="costRes"></textarea>
+      </td>
       <td>
         <textarea type="text" class="preDate"></textarea>
       </td>
@@ -112,10 +126,14 @@
 </body>
 <script>
   const storage = () => {
+    const costSink = document.getElementById('costSink');
+    const costRes = document.getElementsByClassName('costRes');
     const preDate = document.getElementsByClassName('preDate');
     for (let i = 0; i < preDate.length; i += 1) {
-      preDate[i].innerHTML = localStorage.res.split(',')[i];
+      preDate[i].innerHTML = localStorage.preRes.split(',')[i];
+      costRes[i].innerHTML = localStorage.costRes.split(',')[i];
     }
+      costSink.innerHTML = localStorage.costSink;
   };
 </script>
 <script>

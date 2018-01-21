@@ -25,6 +25,6 @@ export default () => {
   out.all = all;
   out.total = total;
   out.result = plan + total;
-  localStorage.res = r;
+  localStorage.preRes = r;
   return out;
 };
