@@ -1,6 +1,5 @@
 import getCalc from './getCalc';
 
-
 const output = () => {
   const out = getCalc();
   const diffRes = document.getElementsByClassName('diffRes');

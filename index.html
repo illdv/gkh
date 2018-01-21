@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body onload="storage();">
+<body>
   <table>
     <tr>
       <td></td>
@@ -121,21 +121,8 @@
       </td>
     </tr>
   </table>
-
   <button id='calc'>Посчитать</button>
 </body>
-<script>
-  const storage = () => {
-    const costSink = document.getElementById('costSink');
-    const costRes = document.getElementsByClassName('costRes');
-    const preDate = document.getElementsByClassName('preDate');
-    for (let i = 0; i < preDate.length; i += 1) {
-      preDate[i].innerHTML = localStorage.preRes.split(',')[i];
-      costRes[i].innerHTML = localStorage.costRes.split(',')[i];
-    }
-      costSink.innerHTML = localStorage.costSink;
-  };
-</script>
 <script>
   var exports = {};
 </script>
