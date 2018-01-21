@@ -6,6 +6,7 @@ const storage = () => {
     input.costRes[i].innerHTML = localStorage.costRes.split(',')[i];
   }
   input.costSink.innerHTML = localStorage.costSink;
+  input.plan.innerHTML = localStorage.plan;
 };
 document.addEventListener(
   'DOMContentLoaded', storage,
