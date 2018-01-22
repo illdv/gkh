@@ -10,8 +10,8 @@ export default () => {
   const diff = [];
   const all = [];
   let total = 0;
-  for (let i = 0; i < input.res.length; i += 1) {
-    const { value } = input.res[i];
+  for (let i = 0; i < input.currentMonth.length; i += 1) {
+    const { value } = input.currentMonth[i];
     total += Number(value);
     diff.push(getDiff(i, value));
     if (getPrice(i).length > 1) {
