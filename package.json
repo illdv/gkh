@@ -4,10 +4,10 @@
   "description": "",
   "main": "dist/scripts.js",
   "scripts": {
-    "webpack": "webpack -w -p --devtool source-map", 
+    "start": "browser-sync start --directory --server --files \"*.css, *.html, dist/*.js\"",
+    "webpack": "webpack --watch -p --devtool source-map",
     "test": "jest",
     "babel": "babel",
-    "gulp": "gulp",
     "eslint": "eslint",
     "build": "NODE_ENV=production babel src -d dist --source-maps inline -w",
     "prepublishOnly": "npm run build"
