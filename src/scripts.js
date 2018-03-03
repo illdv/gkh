@@ -1,3 +1,5 @@
+import getSplitObj from './getSplitObj';
+
 const calc = document.querySelector('#calc');
 const displayCost = document.querySelectorAll('.costRes');
 const displayLast = document.querySelectorAll('.lastMounth');
@@ -7,8 +9,6 @@ const displayAll = document.querySelectorAll('.allRes');
 const plan = document.querySelector('#plan');
 const total = document.querySelector('#total');
 const result = document.querySelector('#result');
-
-const planValue = 100;
 
 const prices = {
   sink: 4,
@@ -31,13 +31,6 @@ const currentMonth = {
   gas: 6,
   el: 5,
 };
-
-function getSplitObj(prop, value = true) {
-  if (!value) {
-    return Object.keys(prop);
-  }
-  return Object.values(prop);
-}
 
 function displaying(nodes, objValue) {
   nodes.forEach((node, index) => {
@@ -82,17 +75,16 @@ function calcTariff(diff, price) {
 }
 displaying(displayAll, calcTariff(objDiff, prices));
 
-plan.textContent = planValue;
-
 const calcTotal = tariff => getSplitObj(tariff).reduce((sum, value) => sum + value, 0);
 
 const totalValue = calcTotal(objTariff);
 
 total.textContent = totalValue;
 
-result.textContent = totalValue + planValue;
-
-function countUp(e) {
-  console.log('!!!');
+plan.value = localStorage.plan;
+function countUp() {
+  const planValue = parseInt(plan.value, 10);
+  localStorage.setItem('plan', planValue);
+  result.textContent = totalValue + planValue;
 }
 calc.addEventListener('click', countUp);
