@@ -29,16 +29,12 @@
     "babel-cli": "*",
     "babel-core": "*",
     "babel-eslint": "*",
-    "babel-jest": "*",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "*",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "*",
-    "eslint-plugin-import": "*",
-    "eslint-plugin-jest": "*",
-    "jest": "^21",
-    "jest-cli": "*"
+    "eslint-plugin-import": "*"
   }
 }
