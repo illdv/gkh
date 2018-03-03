@@ -2,7 +2,7 @@ import getSplitObj from './getSplitObj';
 
 const calc = document.querySelector('#calc');
 const displayCost = document.querySelectorAll('.costRes');
-const displayLast = document.querySelectorAll('.lastMounth');
+const displayLast = document.querySelectorAll('.lastMonth');
 const displayCurrent = document.querySelectorAll('.currentMonth');
 const displayDiff = document.querySelectorAll('.diffRes');
 const displayAll = document.querySelectorAll('.allRes');
@@ -82,6 +82,42 @@ const totalValue = calcTotal(objTariff);
 total.textContent = totalValue;
 
 plan.value = localStorage.plan;
+
+class Data {
+  constructor(hot, cold, gas, el, sink) {
+    this.hot = hot;
+    this.cold = cold;
+    this.gas = gas;
+    this.el = el;
+    this.sink = sink;
+  }
+  createPrice() {
+    const obj = {};
+    obj.sink = this.sink;
+
+    obj.hot = this.hot;
+    obj.cold = this.cold;
+    obj.gas = this.gas;
+    obj.el = this.el;
+    return obj;
+  }
+  create() {
+    const obj = {};
+    obj.hot = this.hot;
+    obj.cold = this.cold;
+    obj.gas = this.gas;
+    obj.el = this.el;
+    return obj;
+  }
+}
+const arr = [];
+const getDisplayCost = displayCost.forEach(cost => {
+  arr.push(parseInt(cost.value, 10));
+});
+
+const price = new Data(...arr);
+console.log(price.createPrice());
+
 function countUp() {
   const planValue = parseInt(plan.value, 10);
   localStorage.setItem('plan', planValue);
