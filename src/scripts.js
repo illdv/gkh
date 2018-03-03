@@ -4,6 +4,11 @@ const displayLast = document.querySelectorAll('.lastMounth');
 const displayCurrent = document.querySelectorAll('.currentMonth');
 const displayDiff = document.querySelectorAll('.diffRes');
 const displayAll = document.querySelectorAll('.allRes');
+const plan = document.querySelector('#plan');
+const total = document.querySelector('#total');
+const result = document.querySelector('#result');
+
+const planValue = 100;
 
 const prices = {
   sink: 4,
@@ -27,10 +32,17 @@ const currentMonth = {
   el: 5,
 };
 
+function getSplitObj(prop, value = true) {
+  if (!value) {
+    return Object.keys(prop);
+  }
+  return Object.values(prop);
+}
+
 function displaying(nodes, objValue) {
   nodes.forEach((node, index) => {
     const span = document.createElement('span');
-    span.innerHTML = Object.values(objValue)[index];
+    span.textContent = getSplitObj(objValue)[index];
     node.appendChild(span);
   });
 }
@@ -42,36 +54,45 @@ displaying(displayCurrent, currentMonth);
 
 const objDiff = {};
 function calcDifference(last, current) {
-  const d = Object.values(last).reduce((acc, lastValue, index) => {
-    const currentValue = Object.values(current)[index];
-    const currentKeys = Object.keys(current)[index];
+  return getSplitObj(last).reduce((acc, lastValue, index) => {
+    const currentValue = getSplitObj(current)[index];
+    const currentKeys = getSplitObj(current, false)[index];
     const diff = currentValue - lastValue;
     acc[currentKeys] = diff;
     return acc;
   }, objDiff);
-
-  return d;
 }
 
 displaying(displayDiff, calcDifference(lastMonth, currentMonth));
 
-function tariff(diff, price) {
-  Object.values(price).reduce((acc, diffValue, index) => {
-    const priceValue = Object.values(price)[index];
-    const priceKey = Object.keys(price)[index];
+const objTariff = {};
+function calcTariff(diff, price) {
+  return getSplitObj(price, false).reduce((acc, priceKey, index) => {
     let forTariff;
-    if (priceKey !== 'sink') {
-      forTariff = priceValue * diffValue;
+    const diffValue = getSplitObj(diff)[index];
+    const priceValue = getSplitObj(price)[index];
+    if (priceKey === 'sink') {
+      forTariff = diffValue * priceValue;
     } else {
-      forTariff = priceValue[0] * diffValue;
+      forTariff = getSplitObj(diff)[index - 1] * priceValue;
     }
-    console.log(forTariff);
-  }, {});
+    acc[priceKey] = forTariff;
+    return acc;
+  }, objTariff);
 }
+displaying(displayAll, calcTariff(objDiff, prices));
 
-tariff(objDiff, prices);
+plan.textContent = planValue;
+
+const calcTotal = tariff => getSplitObj(tariff).reduce((sum, value) => sum + value, 0);
+
+const totalValue = calcTotal(objTariff);
+
+total.textContent = totalValue;
+
+result.textContent = totalValue + planValue;
 
 function countUp(e) {
-  console.log('!!');
+  console.log('!!!');
 }
 calc.addEventListener('click', countUp);
