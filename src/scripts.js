@@ -1,4 +1,5 @@
 import getSplitObj from './getSplitObj';
+import { MouthData, PriceData } from './classData';
 
 const calc = document.querySelector('#calc');
 const displayCost = document.querySelectorAll('.costRes');
@@ -10,40 +11,32 @@ const plan = document.querySelector('#plan');
 const total = document.querySelector('#total');
 const result = document.querySelector('#result');
 
-const prices = {
-  sink: 4,
-  hot: 5,
-  cold: 6,
-  gas: 7,
-  el: 8,
+const createObj = displayList => {
+  const arrValue = [...displayList].reduce((acc, elem) => acc.concat(elem.value), []);
+  if (arrValue.length === 5) {
+    return new PriceData(...arrValue);
+  }
+  return new MouthData(...arrValue);
 };
 
-const lastMonth = {
-  hot: 1,
-  cold: 2,
-  gas: 3,
-  el: 4,
-};
+let prices = JSON.parse(localStorage.getItem('prices')) || '';
 
-const currentMonth = {
-  hot: 8,
-  cold: 7,
-  gas: 6,
-  el: 5,
-};
+const lastMonth = JSON.parse(localStorage.getItem('lastMonth')) || '';
 
-function displaying(nodes, objValue) {
+let currentMonth = JSON.parse(localStorage.getItem('currentMonth')) || '';
+
+function displaying(nodes, obj) {
   nodes.forEach((node, index) => {
-    const span = document.createElement('span');
-    span.textContent = getSplitObj(objValue)[index];
-    node.appendChild(span);
+    if (obj === '') {
+      node.value = '';
+    } else {
+      node.value = getSplitObj(obj)[index];
+    }
   });
 }
 displaying(displayCost, prices);
 
 displaying(displayLast, lastMonth);
-
-displaying(displayCurrent, currentMonth);
 
 const objDiff = {};
 function calcDifference(last, current) {
@@ -51,12 +44,12 @@ function calcDifference(last, current) {
     const currentValue = getSplitObj(current)[index];
     const currentKeys = getSplitObj(current, false)[index];
     const diff = currentValue - lastValue;
+    console.log(diff);
+
     acc[currentKeys] = diff;
     return acc;
   }, objDiff);
 }
-
-displaying(displayDiff, calcDifference(lastMonth, currentMonth));
 
 const objTariff = {};
 function calcTariff(diff, price) {
@@ -73,54 +66,29 @@ function calcTariff(diff, price) {
     return acc;
   }, objTariff);
 }
-displaying(displayAll, calcTariff(objDiff, prices));
 
 const calcTotal = tariff => getSplitObj(tariff).reduce((sum, value) => sum + value, 0);
 
-const totalValue = calcTotal(objTariff);
-
-total.textContent = totalValue;
-
-plan.value = localStorage.plan;
-
-class Data {
-  constructor(hot, cold, gas, el, sink) {
-    this.hot = hot;
-    this.cold = cold;
-    this.gas = gas;
-    this.el = el;
-    this.sink = sink;
-  }
-  createPrice() {
-    const obj = {};
-    obj.sink = this.sink;
-
-    obj.hot = this.hot;
-    obj.cold = this.cold;
-    obj.gas = this.gas;
-    obj.el = this.el;
-    return obj;
-  }
-  create() {
-    const obj = {};
-    obj.hot = this.hot;
-    obj.cold = this.cold;
-    obj.gas = this.gas;
-    obj.el = this.el;
-    return obj;
-  }
-}
-const arr = [];
-const getDisplayCost = displayCost.forEach(cost => {
-  arr.push(parseInt(cost.value, 10));
-});
-
-const price = new Data(...arr);
-console.log(price.createPrice());
+plan.value = localStorage.plan || '';
 
 function countUp() {
+  prices = createObj(displayCost);
+  currentMonth = createObj(displayCurrent);
+
+  localStorage.setItem('prices', JSON.stringify(prices));
+  localStorage.setItem('currentMonth', JSON.stringify(currentMonth));
+  localStorage.setItem('lastMonth', JSON.stringify(currentMonth));
+
+  const diff = calcDifference(lastMonth, currentMonth);
+
+  displaying(displayDiff, diff);
+  displaying(displayAll, calcTariff(objDiff, prices));
   const planValue = parseInt(plan.value, 10);
   localStorage.setItem('plan', planValue);
+
+  const totalValue = calcTotal(objTariff);
+  total.textContent = totalValue;
+
   result.textContent = totalValue + planValue;
 }
 calc.addEventListener('click', countUp);
