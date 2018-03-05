@@ -11,16 +11,22 @@ function handleDisabled() {
     this.textContent = 'Разблокировать';
   }
 
-  if (this.previousElementSibling === displayPlan) {
-    displayPlan.disabled = !displayPlan.disabled;
-  } else if (this.previousElementSibling.textContent === 'Цена') {
-    displayCost.forEach(cost => {
-      cost.disabled = !cost.disabled;
-    });
-  } else if (this.previousElementSibling.textContent === 'Прошлый месяц') {
-    displayLast.forEach(cost => {
-      cost.disabled = !cost.disabled;
-    });
+  switch (this.previousElementSibling.textContent) {
+    case 'План:':
+      displayPlan.disabled = !displayPlan.disabled;
+      break;
+    case 'Цена:':
+      displayCost.forEach(cost => {
+        cost.disabled = !cost.disabled;
+      });
+      break;
+    case 'Прошлый месяц:':
+      displayLast.forEach(cost => {
+        cost.disabled = !cost.disabled;
+      });
+      break;
+    default:
+      console.log('Error switch');
   }
 }
 
