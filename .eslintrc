@@ -4,9 +4,8 @@
     "commonjs": true,
     "es6": true
   },
-  "extends": [
-    "airbnb-base",
-    "prettier",
-    "prettier/react"
-  ]
+  "extends": ["airbnb-base", "prettier", "prettier/react"],
+  "rules": {
+    "no-param-reassign": [2, { "props": false }]
+  }
 }

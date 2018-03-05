@@ -1,6 +1,6 @@
 module.exports = {
   entry: {
-    output: './src/scripts.js',
+    output: ['./src/scripts.js', './src/handleDisabled.js'],
   },
 
   output: {
