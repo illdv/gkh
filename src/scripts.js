@@ -55,21 +55,23 @@ function calcTariff(diff, price) {
 
 const calcTotal = tariff => getSplitObj(tariff).reduce((sum, value) => sum + value, 0);
 
-const createObj = displayList => {
+const fl = (arr, storage) => arr.map((value, index) => (!value ? Object.values(storage)[index] : value));
+
+const createObj = (displayList, st) => {
+  console.log(st);
+
   const arrValue = [...displayList].reduce((acc, elem) => acc.concat(elem.value), []);
-  if (arrValue.length === 5) {
+  const filtered = fl(arrValue, st);
+  if (filtered.length === 5) {
     return new PriceData(...arrValue);
   }
-  const mD = new MouthData(...arrValue);
-
-  return mD;
+  return new MouthData(...arrValue);
 };
 
 function countUp() {
-  prices = createObj(domElements.costs);
-  currentMonth = createObj(domElements.currents);
+  prices = createObj(domElements.costs, JSON.parse(localStorage.prices));
+  currentMonth = createObj(domElements.currents, JSON.parse(localStorage.lastMonth));
   plan = Number(Number(domElements.plan.value).toFixed(2));
-
   localStorage.setItem('prices', JSON.stringify(prices));
   localStorage.setItem('lastMonth', JSON.stringify(currentMonth));
   localStorage.setItem('plan', JSON.stringify(plan));
