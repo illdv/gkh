@@ -1,4 +1,4 @@
-import { displayPlan, displayCost, displayLast } from './scripts';
+import { plan, costs, lasts } from './domElements';
 
 const blocks = document.querySelectorAll('[data-toggle]');
 
@@ -13,15 +13,15 @@ function handleDisabled() {
 
   switch (this.previousElementSibling.textContent) {
     case 'План:':
-      displayPlan.disabled = !displayPlan.disabled;
+      plan.disabled = !plan.disabled;
       break;
     case 'Цена:':
-      displayCost.forEach(cost => {
+      costs.forEach(cost => {
         cost.disabled = !cost.disabled;
       });
       break;
     case 'Прошлый месяц:':
-      displayLast.forEach(cost => {
+      lasts.forEach(cost => {
         cost.disabled = !cost.disabled;
       });
       break;

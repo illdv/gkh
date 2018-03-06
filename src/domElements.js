@@ -1,0 +1,9 @@
+export const calc = document.querySelector('#calc');
+export const costs = document.querySelectorAll('.costRes');
+export const lasts = document.querySelectorAll('.lastMonth');
+export const currents = document.querySelectorAll('.currentMonth');
+export const diffs = document.querySelectorAll('.diffRes');
+export const tariffs = document.querySelectorAll('.allRes');
+export const plan = document.querySelector('#plan');
+export const total = document.querySelector('#total');
+export const result = document.querySelector('#result');
