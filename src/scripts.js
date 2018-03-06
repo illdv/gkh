@@ -1,14 +1,12 @@
 import getSplitObj from './getSplitObj';
-import { MouthData, PriceData, PlanData } from './classData';
+import { MouthData, PriceData } from './classData';
 import * as domElements from './domElements';
 
 let prices = JSON.parse(localStorage.getItem('prices')) || '';
 
 let lastMonth = JSON.parse(localStorage.getItem('lastMonth')) || '';
 
-let currentMonth = '';
-
-const plan = localStorage.getItem('plan') || '';
+let plan = localStorage.getItem('plan') || '';
 
 function displaying(nodes, obj) {
   nodes.forEach((node, index) => {
@@ -40,6 +38,7 @@ function calcTariff(diff, price) {
   return getSplitObj(price, false).reduce((acc, priceKey, index) => {
     let forTariff;
     const diffValue = getSplitObj(diff)[index];
+    console.log(diffValue);
 
     const priceValue = getSplitObj(price)[index];
     if (priceKey === 'sink') {
@@ -67,9 +66,8 @@ const createObj = (displayed, storage) => {
 function countUp() {
   prices = createObj(domElements.costs);
   lastMonth = createObj(domElements.lasts);
-  currentMonth = createObj(domElements.currents, lastMonth);
-
-  console.log(plan);
+  const currentMonth = createObj(domElements.currents, lastMonth);
+  plan = Number(Number(domElements.plan.value).toFixed(2));
 
   localStorage.setItem('prices', JSON.stringify(prices));
   localStorage.setItem('lastMonth', JSON.stringify(currentMonth));

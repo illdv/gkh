@@ -15,12 +15,3 @@ export class MouthData {
     this.el = el;
   }
 }
-
-export class PlanData {
-  constructor(plan) {
-    this.plan = plan;
-  }
-  get value() {
-    return Number(Number(this.plan).toFixed(2));
-  }
-}
