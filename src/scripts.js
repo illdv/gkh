@@ -6,7 +6,7 @@ let prices = JSON.parse(localStorage.getItem('prices')) || '';
 
 let lastMonth = JSON.parse(localStorage.getItem('lastMonth')) || '';
 
-let plan = localStorage.getItem('plan') || '';
+let plan = JSON.parse(localStorage.getItem('plan')) || '';
 
 function displaying(nodes, obj) {
   nodes.forEach((node, index) => {
@@ -26,9 +26,7 @@ function calcDifference(last, current) {
   return getSplitObj(last).reduce((acc, lastValue, index) => {
     const currentValue = getSplitObj(current)[index];
     const currentKeys = getSplitObj(current, false)[index];
-
     const diff = currentValue - lastValue;
-
     acc[currentKeys] = !diff ? null : diff;
     return acc;
   }, objDiff);
@@ -65,7 +63,7 @@ function countUp() {
 
   localStorage.setItem('prices', JSON.stringify(prices));
   localStorage.setItem('lastMonth', JSON.stringify(currentMonth));
-  localStorage.setItem('plan', plan);
+  localStorage.setItem('plan', JSON.stringify(plan));
 
   displaying(domElements.diffs, calcDifference(lastMonth, currentMonth));
   displaying(domElements.tariffs, calcTariff(objDiff, prices));
