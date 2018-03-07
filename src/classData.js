@@ -6,7 +6,6 @@ export class MouthData {
     this.el = el;
   }
 }
-
 export class PriceData {
   constructor(sink, hot, cold, gas, el) {
     this.sink = sink;

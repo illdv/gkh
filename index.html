@@ -12,11 +12,11 @@
     <tr>
       <td></td>
       <td>
-        <span>Цена</span>
+        <span>Цена:</span>
         <button data-toggle=true>Разблокировать</button>
       </td>
       <td>
-        <span>Прошлый месяц</span>
+        <span>Прошлый месяц:</span>
         <button data-toggle=true>Разблокировать</button>
       </td>
       <td>Текущий месяц</td>
@@ -27,6 +27,7 @@
     <tr class="wrap">
       <th>Горячая вода:</th>
       <td>
+        <span>В сток:</span>
         <input class="costRes" type="text" disabled>
         <input class="costRes" type="text" disabled>
       </td>
@@ -106,14 +107,17 @@
 
   <table>
     <tr>
-      <td>Начислено по плану</td>
+      <td>
+        <span>План:</span>
+        <button data-toggle=true>Разблокировать</button>
+      </td>
       <td>По приборам:</td>
       <td>Итого:</td>
     </tr>
     <tr>
       <td>
-        <input id="plan" type="text" disabled>
-        <button data-toggle=true>Разблокировать</button>
+        <input id="plan" type="text" name="plan" disabled>
+
       </td>
       <td>
         <p id="total"></p>

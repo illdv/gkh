@@ -1,4 +1,4 @@
-import { displayPlan, displayCost, displayLast } from './scripts';
+import { plan, costs, lasts } from './domElements';
 
 const blocks = document.querySelectorAll('[data-toggle]');
 
@@ -11,16 +11,22 @@ function handleDisabled() {
     this.textContent = 'Разблокировать';
   }
 
-  if (this.previousElementSibling === displayPlan) {
-    displayPlan.disabled = !displayPlan.disabled;
-  } else if (this.previousElementSibling.textContent === 'Цена') {
-    displayCost.forEach(cost => {
-      cost.disabled = !cost.disabled;
-    });
-  } else if (this.previousElementSibling.textContent === 'Прошлый месяц') {
-    displayLast.forEach(cost => {
-      cost.disabled = !cost.disabled;
-    });
+  switch (this.previousElementSibling.textContent) {
+    case 'План:':
+      plan.disabled = !plan.disabled;
+      break;
+    case 'Цена:':
+      costs.forEach(cost => {
+        cost.disabled = !cost.disabled;
+      });
+      break;
+    case 'Прошлый месяц:':
+      lasts.forEach(cost => {
+        cost.disabled = !cost.disabled;
+      });
+      break;
+    default:
+      console.log('Error switch');
   }
 }
 
