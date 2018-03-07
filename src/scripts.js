@@ -10,7 +10,7 @@ let plan = localStorage.getItem('plan') || '';
 
 function displaying(nodes, obj) {
   nodes.forEach((node, index) => {
-    if (obj === '') {
+    if (!obj) {
       node.value = '';
     } else {
       node.value = getSplitObj(obj)[index];
@@ -27,7 +27,7 @@ function calcDifference(last, current) {
     const currentValue = getSplitObj(current)[index];
     const currentKeys = getSplitObj(current, false)[index];
 
-    const diff = currentValue <= 0 ? '' : currentValue - lastValue;
+    const diff = currentValue - lastValue;
     acc[currentKeys] = diff;
     return acc;
   }, objDiff);
@@ -38,8 +38,6 @@ function calcTariff(diff, price) {
   return getSplitObj(price, false).reduce((acc, priceKey, index) => {
     let forTariff;
     const diffValue = getSplitObj(diff)[index];
-    console.log(diffValue);
-
     const priceValue = getSplitObj(price)[index];
     if (priceKey === 'sink') {
       forTariff = Number(Number(diffValue * priceValue).toFixed(2));
