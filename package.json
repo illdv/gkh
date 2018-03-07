@@ -5,12 +5,7 @@
   "main": "dist/scripts.js",
   "scripts": {
     "start": "browser-sync start --directory --server --files \"*.css, *.html, dist/*.js\"",
-    "webpack": "webpack --watch -p --devtool source-map",
-    "test": "jest",
-    "babel": "babel",
-    "eslint": "eslint",
-    "build": "NODE_ENV=production babel src -d dist --source-maps inline -w",
-    "prepublishOnly": "npm run build"
+    "webpack": "webpack --watch -p --devtool source-map"
   },
   "repository": {
     "type": "git",

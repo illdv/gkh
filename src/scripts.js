@@ -4,11 +4,9 @@ import * as domElements from './domElements';
 
 let prices = JSON.parse(localStorage.getItem('prices')) || '';
 
-const lastMonth = JSON.parse(localStorage.getItem('lastMonth')) || '';
+let lastMonth = JSON.parse(localStorage.getItem('lastMonth')) || '';
 
-let currentMonth = '';
-
-let plan = JSON.parse(localStorage.getItem('plan')) || '';
+let plan = localStorage.getItem('plan') || '';
 
 function displaying(nodes, obj) {
   nodes.forEach((node, index) => {
@@ -19,7 +17,6 @@ function displaying(nodes, obj) {
     }
   });
 }
-
 displaying(domElements.costs, prices);
 displaying(domElements.lasts, lastMonth);
 domElements.plan.value = plan;
@@ -41,6 +38,7 @@ function calcTariff(diff, price) {
   return getSplitObj(price, false).reduce((acc, priceKey, index) => {
     let forTariff;
     const diffValue = getSplitObj(diff)[index];
+    console.log(diffValue);
 
     const priceValue = getSplitObj(price)[index];
     if (priceKey === 'sink') {
@@ -55,24 +53,25 @@ function calcTariff(diff, price) {
 
 const calcTotal = tariff => getSplitObj(tariff).reduce((sum, value) => sum + value, 0);
 
-const createObj = displayList => {
-  const arrValue = [...displayList].reduce((acc, elem) => acc.concat(elem.value), []);
+const fl = (arr, storage) => arr.map((value, index) => (!value ? Object.values(storage)[index] : value));
+
+const createObj = (displayed, storage) => {
+  const arrValue = [...displayed].reduce((acc, elem) => acc.concat(elem.value), []);
   if (arrValue.length === 5) {
     return new PriceData(...arrValue);
   }
-  const mD = new MouthData(...arrValue);
-
-  return mD;
+  return storage ? new MouthData(...fl(arrValue, storage)) : new MouthData(...arrValue);
 };
 
 function countUp() {
   prices = createObj(domElements.costs);
-  currentMonth = createObj(domElements.currents);
+  lastMonth = createObj(domElements.lasts);
+  const currentMonth = createObj(domElements.currents, lastMonth);
   plan = Number(Number(domElements.plan.value).toFixed(2));
 
   localStorage.setItem('prices', JSON.stringify(prices));
   localStorage.setItem('lastMonth', JSON.stringify(currentMonth));
-  localStorage.setItem('plan', JSON.stringify(plan));
+  localStorage.setItem('plan', plan);
 
   displaying(domElements.diffs, calcDifference(lastMonth, currentMonth));
   displaying(domElements.tariffs, calcTariff(objDiff, prices));
