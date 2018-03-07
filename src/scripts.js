@@ -28,28 +28,24 @@ function calcDifference(last, current) {
     const currentKeys = getSplitObj(current, false)[index];
 
     const diff = currentValue - lastValue;
-    acc[currentKeys] = diff;
+
+    acc[currentKeys] = !diff ? null : diff;
     return acc;
   }, objDiff);
 }
 
 const objTariff = {};
 function calcTariff(diff, price) {
-  return getSplitObj(price, false).reduce((acc, priceKey, index) => {
-    let forTariff;
-    const diffValue = getSplitObj(diff)[index];
-    const priceValue = getSplitObj(price)[index];
-    if (priceKey === 'sink') {
-      forTariff = Number(Number(diffValue * priceValue).toFixed(2));
-    } else {
-      forTariff = Number(Number(getSplitObj(diff)[index - 1] * priceValue).toFixed(2));
-    }
-    acc[priceKey] = forTariff;
+  return getSplitObj(price).reduce((acc, priceValue, index) => {
+    const diffValue = getSplitObj(diff)[index - 1];
+    const priceKey = getSplitObj(price, false)[index];
+    const forTariff = priceKey === 'sink' ? diff.hot * price.sink : diffValue * priceValue;
+    acc[priceKey] = !forTariff ? null : +forTariff.toFixed(2);
     return acc;
   }, objTariff);
 }
 
-const calcTotal = tariff => getSplitObj(tariff).reduce((sum, value) => sum + value, 0);
+const calcTotal = tariff => getSplitObj(tariff).reduce((sum, value) => sum + value);
 
 const fl = (arr, storage) => arr.map((value, index) => (!value ? Object.values(storage)[index] : value));
 
