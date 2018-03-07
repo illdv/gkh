@@ -8,131 +8,134 @@
 </head>
 
 <body>
-  <table>
-    <tr>
-      <td></td>
-      <td>
-        <span>Цена:</span>
-        <button data-toggle=true>Разблокировать</button>
-      </td>
-      <td>
-        <span>Прошлый месяц:</span>
-        <button data-toggle=true>Разблокировать</button>
-      </td>
-      <td>Текущий месяц</td>
-      <td>Разница</td>
-      <td>Всего по тарифу</td>
-    </tr>
+  <section>
+    <table id="resources">
+      <tr>
+        <td>Ресурс</td>
+        <td>
+          <span>Цена:</span>
+          <button data-toggle=true>Разблокировать</button>
+        </td>
+        <td>
+          <span>Прошлый месяц:</span>
+          <button data-toggle=true>Разблокировать</button>
+        </td>
+        <td>Текущий месяц</td>
+        <td>Разница</td>
+        <td>Всего по тарифу</td>
+      </tr>
+      <tr>
+        <td>Сток горячая вода</td>
+        <td>
+          <input class="costRes" type="text" disabled>
+        </td>
+        <td rowspan="2">
+          <input class="lastMonth" type="text" disabled>
+        </td>
+        <td rowspan="2">
+          <input class="currentMonth" type="text">
+        </td>
+        <td rowspan="2">
+          <input class="diffRes" type="text" disabled>
+        </td>
+        <td>
+          <input class="allRes" type="text" disabled>
+        </td>
+      </tr>
+      <tr>
+        <td>Горячая вода:</td>
+        <td>
+          <input class="costRes" type="text" disabled>
+        </td>
+        <td>
+          <input class="allRes" type="text" disabled>
+        </td>
+      </tr>
 
-    <tr class="wrap">
-      <th>Горячая вода:</th>
-      <td>
-        <span>В сток:</span>
-        <input class="costRes" type="text" disabled>
-        <input class="costRes" type="text" disabled>
-      </td>
-      <td>
-        <input class="lastMonth" type="text" disabled>
-      </td>
-      <td>
-        <input class="currentMonth" type="text">
-      </td>
-      <td>
-        <input class="diffRes" type="text" disabled>
-      </td>
-      <td>
-        <input class="allRes" type="text" disabled>
-        <input class="allRes" type="text" disabled>
-      </td>
-    </tr>
+      <tr>
+        <td>Холодная вода:</td>
+        <td>
+          <input class="costRes" type="text" disabled>
+        </td>
+        <td>
+          <input class="lastMonth" type="text" disabled>
+        </td>
+        <td>
+          <input class="currentMonth" type="text">
+        </td>
+        <td>
+          <input class="diffRes" type="text" disabled>
+        </td>
+        <td>
+          <input class="allRes" type="text" disabled>
+        </td>
+      </tr>
 
-    <tr class="wrap">
-      <th>Холодная вода:</th>
-      <td>
-        <input class="costRes" type="text" disabled>
-      </td>
-      <td>
-        <input class="lastMonth" type="text" disabled>
-      </td>
-      <td>
-        <input class="currentMonth" type="text">
-      </td>
-      <td>
-        <input class="diffRes" type="text" disabled>
-      </td>
-      <td>
-        <input class="allRes" type="text" disabled>
-      </td>
-    </tr>
+      <tr>
+        <td>Газ:</td>
+        <td>
+          <input class="costRes" type="text" disabled>
+        </td>
+        <td>
+          <input class="lastMonth" type="text" disabled>
+        </td>
+        <td>
+          <input class="currentMonth" type="text">
+        </td>
+        <td>
+          <input class="diffRes" type="text" disabled>
+        </td>
+        <td>
+          <input class="allRes" type="text" disabled>
+        </td>
+      </tr>
 
-    <tr class="wrap">
-      <th>Газ:</th>
-      <td>
-        <input class="costRes" type="text" disabled>
-      </td>
-      <td>
-        <input class="lastMonth" type="text" disabled>
-      </td>
-      <td>
-        <input class="currentMonth" type="text">
-      </td>
-      <td>
-        <input class="diffRes" type="text" disabled>
-      </td>
-      <td>
-        <input class="allRes" type="text" disabled>
-      </td>
-    </tr>
+      <tr>
+        <td>Электричество:</td>
+        <td>
+          <input class="costRes" type="text" disabled>
+        </td>
+        <td>
+          <input class="lastMonth" type="text" disabled>
+        </td>
+        <td>
+          <input class="currentMonth" type="text">
+        </td>
+        <td>
+          <input class="diffRes" type="text" disabled>
+        </td>
 
-    <tr class="wrap">
-      <th>Электричество:</th>
-      <td>
-        <input class="costRes" type="text" disabled>
-      </td>
-      <td>
-        <input class="lastMonth" type="text" disabled>
-      </td>
-      <td>
-        <input class="currentMonth" type="text">
-      </td>
-      <td>
-        <input class="diffRes" type="text" disabled>
-      </td>
+        <td>
+          <input class="allRes" type="text" disabled>
+        </td>
+      </tr>
+    </table>
 
-      <td>
-        <input class="allRes" type="text" disabled>
-      </td>
-    </tr>
-  </table>
+    <table>
+      <tr>
+        <td>
+          <span>План:</span>
+          <button data-toggle=true>Разблокировать</button>
+        </td>
+        <td>По приборам:</td>
+        <td>Итого:</td>
+      </tr>
+      <tr>
+        <td>
+          <input id="plan" type="text" name="plan" disabled>
+        </td>
+        <td>
+          <p id="total"></p>
+        </td>
+        <td>
+          <p id="result"></p>
+        </td>
+      </tr>
+    </table>
+  </section>
+  <button id='btn-calc'>Посчитать</button>
 
-  <table>
-    <tr>
-      <td>
-        <span>План:</span>
-        <button data-toggle=true>Разблокировать</button>
-      </td>
-      <td>По приборам:</td>
-      <td>Итого:</td>
-    </tr>
-    <tr>
-      <td>
-        <input id="plan" type="text" name="plan" disabled>
-
-      </td>
-      <td>
-        <p id="total"></p>
-      </td>
-      <td>
-        <p id="result"></p>
-      </td>
-    </tr>
-  </table>
-  <button id='calc'>Посчитать</button>
-  <button id='save'>Сохранить</button>
 </body>
-<script>
-  var exports = {};
-</script>
 <script src="dist/bundle.js"></script>
 
 </html>

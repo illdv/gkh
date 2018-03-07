@@ -1,4 +1,4 @@
-export const calc = document.querySelector('#calc');
+export const calc = document.querySelector('#btn-calc');
 export const costs = document.querySelectorAll('.costRes');
 export const lasts = document.querySelectorAll('.lastMonth');
 export const currents = document.querySelectorAll('.currentMonth');
