@@ -5,22 +5,22 @@ const blocks = document.querySelectorAll('[data-toggle]');
 function handleDisabled() {
   if (this.dataset.toggle === 'true') {
     this.dataset.toggle = false;
-    this.textContent = 'Блокировать';
+    this.innerHTML = '<use class  xlink:href="#unlock"/>'
   } else {
     this.dataset.toggle = true;
-    this.textContent = 'Разблокировать';
+    this.innerHTML = '<use class  xlink:href="#lock"/>';
   }
 
-  switch (this.previousElementSibling.textContent) {
-    case 'План:':
+  switch (this.nextElementSibling.textContent) {
+    case 'План':
       plan.disabled = !plan.disabled;
       break;
-    case 'Цена:':
+    case 'Цена':
       costs.forEach(cost => {
         cost.disabled = !cost.disabled;
       });
       break;
-    case 'Прошлый месяц:':
+    case 'Прошлый':
       lasts.forEach(cost => {
         cost.disabled = !cost.disabled;
       });

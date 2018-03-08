@@ -69,8 +69,10 @@ function countUp() {
   displaying(domElements.tariffs, objTariff);
 
   const totalValue = calcTotal(objTariff);
-  domElements.total.textContent = totalValue;
+  domElements.total.value = totalValue;
 
-  domElements.result.textContent = totalValue + plan;
+  domElements.result.value = totalValue + plan;
 }
 domElements.calc.addEventListener('click', countUp);
+
+window.addEventListener('keyup', e => (e.key === 'Enter' ? countUp() : null));
