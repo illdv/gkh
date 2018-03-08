@@ -1,4 +1,5 @@
 export const calc = document.querySelector('#btn-calc');
+export const reset = document.querySelector('#btn-reset');
 export const costs = document.querySelectorAll('.costRes');
 export const lasts = document.querySelectorAll('.lastMonth');
 export const currents = document.querySelectorAll('.currentMonth');
@@ -7,3 +8,4 @@ export const tariffs = document.querySelectorAll('.allRes');
 export const plan = document.querySelector('#plan');
 export const total = document.querySelector('#total');
 export const result = document.querySelector('#result');
+export const mutable = [...currents, ...diffs, ...tariffs, total, result];

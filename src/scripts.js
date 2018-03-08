@@ -74,5 +74,12 @@ function countUp() {
   domElements.result.value = totalValue + plan;
 }
 domElements.calc.addEventListener('click', countUp);
-
 window.addEventListener('keyup', e => (e.key === 'Enter' ? countUp() : null));
+
+function reseted() {
+  domElements.mutable.forEach(elem => {
+    elem.value = null;
+  });
+}
+domElements.reset.addEventListener('click', reseted);
+window.addEventListener('keyup', e => (e.key === 'Escape' ? reseted() : null));

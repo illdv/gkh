@@ -5,7 +5,7 @@ const blocks = document.querySelectorAll('[data-toggle]');
 function handleDisabled() {
   if (this.dataset.toggle === 'true') {
     this.dataset.toggle = false;
-    this.innerHTML = '<use class  xlink:href="#unlock"/>'
+    this.innerHTML = '<use class  xlink:href="#unlock"/>';
   } else {
     this.dataset.toggle = true;
     this.innerHTML = '<use class  xlink:href="#lock"/>';
