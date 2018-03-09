@@ -43,13 +43,13 @@
       <tr>
         <td>Сток горячая вода</td>
         <td>
-          <input class="costRes" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="costRes" type="text" disabled>
         </td>
         <td rowspan="2">
-          <input class="lastMonth" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="lastMonth" type="text" disabled>
         </td>
         <td rowspan="2">
-          <input class="currentMonth" type="text" oninput="onlyNumber(this)">
+          <input class="currentMonth" type="text">
         </td>
         <td rowspan="2">
           <input class="diffRes" disabled>
@@ -61,7 +61,7 @@
       <tr>
         <td>Горячая вода:</td>
         <td>
-          <input class="costRes" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="costRes" type="text" disabled>
         </td>
         <td>
           <input class="allRes" disabled>
@@ -71,13 +71,13 @@
       <tr>
         <td>Холодная вода:</td>
         <td>
-          <input class="costRes" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="costRes" type="text" disabled>
         </td>
         <td>
-          <input class="lastMonth" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="lastMonth" type="text" disabled>
         </td>
         <td>
-          <input class="currentMonth" type="text" oninput="onlyNumber(this)">
+          <input class="currentMonth" type="text">
         </td>
         <td>
           <input class="diffRes" disabled>
@@ -90,13 +90,13 @@
       <tr>
         <td>Газ:</td>
         <td>
-          <input class="costRes" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="costRes" type="text" disabled>
         </td>
         <td>
-          <input class="lastMonth" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="lastMonth" type="text" disabled>
         </td>
         <td>
-          <input class="currentMonth" type="text" oninput="onlyNumber(this)">
+          <input class="currentMonth" type="text">
         </td>
         <td>
           <input class="diffRes" disabled>
@@ -109,13 +109,13 @@
       <tr>
         <td>Электричество:</td>
         <td>
-          <input class="costRes" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="costRes" type="text" disabled>
         </td>
         <td>
-          <input class="lastMonth" type="text" oninput="onlyNumber(this)" disabled>
+          <input class="lastMonth" type="text" disabled>
         </td>
         <td>
-          <input class="currentMonth" type="text" oninput="onlyNumber(this)">
+          <input class="currentMonth" type="text">
         </td>
         <td>
           <input class="diffRes" disabled>
@@ -137,7 +137,7 @@
       </tr>
       <tr>
         <td>
-          <input id="plan" type="text" name="plan" oninput="onlyNumber(this)" disabled>
+          <input id="plan" type="text" disabled>
         </td>
       </tr>
       <tr>
@@ -147,8 +147,6 @@
             <input id="total" disabled>
           </td>
         </tr>
-
-
       </tr>
       <tr>
         <td>Итого</td>
@@ -166,12 +164,6 @@
     <button id='btn-reset'>Сбросить</button>
   </section>
 </body>
-<script>
-  function onlyNumber(self) {
-    self.value = self.value.replace(/\D/g, '');
-
-  }
-</script>
 <script src="dist/bundle.js"></script>
 
 </html>

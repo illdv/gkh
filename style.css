@@ -36,10 +36,10 @@ table tr:last-child td {
 }
 
 table input {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: black;
   text-align: center;
-  width: 60px;
+  width: 80px;
   border-radius: 5px;
 }
 table input:disabled {

@@ -83,3 +83,9 @@ function reseted() {
 }
 domElements.reset.addEventListener('click', reseted);
 window.addEventListener('keyup', e => (e.key === 'Escape' ? reseted() : null));
+
+document.querySelectorAll('[type="text"]').forEach(text => {
+  text.oninput = function() {
+    this.value = this.value.replace(/[^\d.]/g, '');
+  };
+});
